@@ -1,0 +1,17 @@
+//
+//  BB_PrefixHeader.pch
+//  Bilibili_Demo
+//
+//  Created by 张征鸿 on 2017/8/23.
+//  Copyright © 2017年 张征鸿. All rights reserved.
+//
+
+#ifndef BB_PrefixHeader_pch
+#define BB_PrefixHeader_pch
+
+#import "BB_Header.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* BB_PrefixHeader_pch */
