@@ -20,6 +20,7 @@
 		C6BEEE121F4D7E0C00A9FB27 /* CALayer+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BEEE0F1F4D7E0C00A9FB27 /* CALayer+YYAdd.m */; };
 		C6BEEE131F4D7E0C00A9FB27 /* YYCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BEEE111F4D7E0C00A9FB27 /* YYCGUtilities.m */; };
 		C6BEEE161F4D9E5100A9FB27 /* BBRfreshAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BEEE151F4D9E5100A9FB27 /* BBRfreshAnimationLayer.m */; };
+		C6BEEE821F541ABE00A9FB27 /* BBAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BEEE811F541ABE00A9FB27 /* BBAnimationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		C6BEEE111F4D7E0C00A9FB27 /* YYCGUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCGUtilities.m; sourceTree = "<group>"; };
 		C6BEEE141F4D9E5100A9FB27 /* BBRfreshAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRfreshAnimationLayer.h; sourceTree = "<group>"; };
 		C6BEEE151F4D9E5100A9FB27 /* BBRfreshAnimationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRfreshAnimationLayer.m; sourceTree = "<group>"; };
+		C6BEEE801F541ABE00A9FB27 /* BBAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAnimationView.h; sourceTree = "<group>"; };
+		C6BEEE811F541ABE00A9FB27 /* BBAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAnimationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,8 @@
 			children = (
 				C6BEEE0A1F4D6F4100A9FB27 /* BBRfreshView.h */,
 				C6BEEE0B1F4D6F4100A9FB27 /* BBRfreshView.m */,
+				C6BEEE801F541ABE00A9FB27 /* BBAnimationView.h */,
+				C6BEEE811F541ABE00A9FB27 /* BBAnimationView.m */,
 				C6BEEE141F4D9E5100A9FB27 /* BBRfreshAnimationLayer.h */,
 				C6BEEE151F4D9E5100A9FB27 /* BBRfreshAnimationLayer.m */,
 			);
@@ -338,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6BEEDD31F4D604C00A9FB27 /* AppDelegate.m in Sources */,
+				C6BEEE821F541ABE00A9FB27 /* BBAnimationView.m in Sources */,
 				C6BEEE011F4D612500A9FB27 /* BBMainViewController.m in Sources */,
 				C6BEEE131F4D7E0C00A9FB27 /* YYCGUtilities.m in Sources */,
 				C6BEEE161F4D9E5100A9FB27 /* BBRfreshAnimationLayer.m in Sources */,

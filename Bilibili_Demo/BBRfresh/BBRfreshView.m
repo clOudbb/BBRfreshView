@@ -7,12 +7,12 @@
 //
 
 #import "BBRfreshView.h"
-
+#import "BBAnimationView.h"
 @interface BBRfreshView ()<UIScrollViewDelegate>
 
 @property (nullable, strong, nonatomic) UIScrollView *scrollView;
 
-@property (nullable, strong, nonatomic) UIView *animationView; //承载动画layer
+@property (nullable, strong, nonatomic) BBAnimationView *animationView; //承载动画layer
 @property (nullable, strong, nonatomic) BBRfreshAnimationLayer *animationLayer;
 @end
 
@@ -65,7 +65,7 @@ static float pullOffsetY_showView = 50; //下拉多少出现动画层
  */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (willDraggingEnd) {
+    if (willDraggingEnd && _scrollView.contentOffset.y > -pullOffsetY_showView) {
         return;
     }
     if (scrollView.contentOffset.y < -pullOffsetY_showView) {
@@ -115,12 +115,13 @@ static bool willDraggingEnd = false;  //拖拽是否结束
     return _showView;
 }
 
-- (UIView *)animationView
+- (BBAnimationView *)animationView
 {
     if (!_animationView) {
-        _animationView = [UIView new];
-        self.animationLayer = [BBRfreshAnimationLayer layer];
-        [_animationView.layer insertSublayer:_animationLayer atIndex:0];
+        _animationView = [BBAnimationView new];
+        if ([_animationView.layer isKindOfClass:[BBRfreshAnimationLayer class]]) {
+            _animationLayer = (BBRfreshAnimationLayer *)_animationView.layer;
+        }
     }
     return _animationView;
 }
