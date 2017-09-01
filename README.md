@@ -34,4 +34,4 @@
 * iOS 8+
 
 ### 具体效果
-<img src="http://wx2.sinaimg.cn/mw690/005Duxwwgy1fj479gygiyg30ad0ijnbo.gif" width="50%" height="50%">
+<img src="http://wx2.sinaimg.cn/mw690/005Duxwwgy1fj479gygiyg30ad0ijnbo.gif" width="25%" height="25%">
