@@ -8,7 +8,8 @@
 
 #import "BBMainViewController.h"
 #import "BBRfreshView.h"
-
+#define kPinkColor   kRGB(247, 75, 121)
+#define kRGB(R, G, B)               [UIColor colorWithRed:(R)/255.0f green:(G)/255.0f blue:(B)/255.0f alpha:1.0f]
 @interface BBMainViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong, nullable) UITableView *tableView;
@@ -24,15 +25,17 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.backGoundView];
     [self.backGoundView showFromScrollView:self.tableView];
-    self.backGoundView.showView.backgroundColor = [UIColor orangeColor];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.backGoundView.showView.backgroundColor = [UIColor grayColor];
+    self.backGoundView.showView.layer.cornerRadius = 8;
+    self.view.backgroundColor = kPinkColor;
+    self.view.layer.masksToBounds = true;
+    self.view.layer.cornerRadius = 8;
 }
 
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:(CGRect){0, 100, 375, 567} style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];

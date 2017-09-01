@@ -50,6 +50,7 @@ static float const bb_animationViewHeight = 100;
 
 - (void)showFromScrollView:(UIScrollView *)scrollView
 {
+    NSParameterAssert([scrollView isKindOfClass:[UITableView class]]);
     _scrollView = scrollView;
     _scrollView.delegate = self;
     [scrollView.superview insertSubview:self belowSubview:scrollView];
