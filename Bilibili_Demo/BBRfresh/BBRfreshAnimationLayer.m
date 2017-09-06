@@ -170,7 +170,7 @@ static bool waveOpen = false;
 {
     [CATransaction begin];
     [CATransaction setDisableActions:true];
-    if (position > 0.6) {
+    if (position > 0.7) {
 //        move = move + (position - move) / 10;
         if (!waveOpen) {
             [self waveAnimation];

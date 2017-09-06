@@ -47,51 +47,50 @@ static float const bb_animationViewHeight = 100;
 }
 
 #pragma mark - Public Method
-
+static NSString * const bb_observer_contentOffset = @"contentOffset";
 - (void)showFromScrollView:(UIScrollView *)scrollView
 {
     NSParameterAssert([scrollView isKindOfClass:[UITableView class]]);
     _scrollView = scrollView;
     _scrollView.delegate = self;
     [scrollView.superview insertSubview:self belowSubview:scrollView];
+    [_scrollView addObserver:self forKeyPath:bb_observer_contentOffset options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark - ScrollView Delegate
 static bool beyondCrucial = false;
 static float pullOffsetY_showView = 50; //下拉多少出现动画层
-/**
- * 这里在tableView回弹时 监听不够精确，导致回弹时动画不会回到起始点
- * 暂时在回弹结束时主动将动画回归起始位置
- * 可以考虑用KVO监听(性能消耗大，频率高)
- */
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if (willDraggingEnd && _scrollView.contentOffset.y > -pullOffsetY_showView) {
-        return;
-    }
-    if (scrollView.contentOffset.y < -pullOffsetY_showView) {
-        if ([scrollView isKindOfClass:[UITableView class]]) {
+    if ([keyPath isEqualToString:bb_observer_contentOffset]) {
+        CGPoint offset = [(NSValue *)change[NSKeyValueChangeNewKey] CGPointValue];
+        CGFloat offset_y = offset.y;
+        
+        if (willDraggingEnd && _scrollView.contentOffset.y > -pullOffsetY_showView) {
+            return;
+        }
+        if (offset_y < -pullOffsetY_showView) {
             _showView.top = fabs(_scrollView.contentOffset.y) - pullOffsetY_showView;
-            NSLog(@"%.2f", _showView.top);
-        }
-        if (!beyondCrucial) {
-            beyondCrucial = true;
-        }
-    } else {
-        if (beyondCrucial) {
-            if (_showView.top < 0) {
-                _showView.top = 0;
-                beyondCrucial = !beyondCrucial;
-            } else {
-                _showView.top = fabs(_scrollView.contentOffset.y) - pullOffsetY_showView;
+            
+            if (!beyondCrucial) {
+                beyondCrucial = true;
+            }
+        } else {
+            if (beyondCrucial) {
+                if (_showView.top < 0) {
+                    _showView.top = 0;
+                    beyondCrucial = !beyondCrucial;
+                } else {
+                    _showView.top = fabs(_scrollView.contentOffset.y) - pullOffsetY_showView;
+                }
             }
         }
-    }
-    _animationView.bottom = _showView.top + bb_earHeight;
-    if (_scrollView.contentOffset.y <= -pullOffsetY_showView) {
-        CGFloat position = fabs(_scrollView.contentOffset.y + pullOffsetY_showView) / 100;
-        NSLog(@"position = %f", position);
-        [_animationLayer positionAnimation:position];
+        _animationView.bottom = _showView.top + bb_earHeight;
+        if (_scrollView.contentOffset.y <= -pullOffsetY_showView) {
+            CGFloat position = fabs(_scrollView.contentOffset.y + pullOffsetY_showView) / 100;
+            [_animationLayer positionAnimation:position];
+        }
     }
 }
 
@@ -138,6 +137,7 @@ static bool willDraggingEnd = false;  //拖拽是否结束
 - (void)dealloc
 {
     _scrollView.delegate = nil;
+    [self removeObserver:self forKeyPath:bb_observer_contentOffset];
 }
 
 @end
