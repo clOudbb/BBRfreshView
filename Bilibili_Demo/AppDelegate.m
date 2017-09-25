@@ -20,7 +20,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     BBMainViewController *base = [[BBMainViewController alloc]init];
-    self.window.rootViewController = base;
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:base];
+    navi.navigationBar.translucent = false;
+    self.window.rootViewController = navi;
     [self.window makeKeyAndVisible];
     return YES;
 }

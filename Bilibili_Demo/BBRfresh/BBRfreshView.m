@@ -10,7 +10,7 @@
 #import "BBAnimationView.h"
 @interface BBRfreshView ()<UIScrollViewDelegate>
 
-@property (nullable, strong, nonatomic) UIScrollView *scrollView;
+@property (nullable, weak, nonatomic) UIScrollView *scrollView;
 
 @property (nullable, strong, nonatomic) BBAnimationView *animationView; //承载动画layer
 @property (nullable, strong, nonatomic) BBRfreshAnimationLayer *animationLayer;

@@ -28,14 +28,12 @@
     self.backGoundView.showView.backgroundColor = [UIColor grayColor];
     self.backGoundView.showView.layer.cornerRadius = 8;
     self.view.backgroundColor = kPinkColor;
-    self.view.layer.masksToBounds = true;
-    self.view.layer.cornerRadius = 8;
 }
 
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:(CGRect){0, 0, self.view.width, self.view.height} style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
